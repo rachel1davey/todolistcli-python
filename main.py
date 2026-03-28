@@ -68,8 +68,11 @@ def delete_task(tasks, task_id):
         list_tasks()
     
 
-def search_task():
- pass
+def search_task(tasks, task_name):
+ for t in tasks:
+    if task_name.lower in t["task"].lower:
+        print (t["id"])
+         
 
 
 def main():
@@ -97,7 +100,7 @@ def main():
     del_parser.add_argument('task_id', type=str, help="Task ID to delete")
 
     search_parser = subparsers.add_parser('search', help="Search for tasks")
-    search_parser.add_argument('task', type=str, help="Task to search for")
+    search_parser.add_argument('task_name', type=str, help="Task to search for")
 
     exit_parser = subparsers.add_parser('exit', help="exit")
     
@@ -111,7 +114,7 @@ def main():
     elif args.command == "delete":
         delete_task(tasks, args.task_id)
     elif args.command == "search":
-        search_task(args.task)
+        search_task(tasks, args.task_name)
     elif args.command == "exit":
         exitArt=text2art("ByeBye")
         print(exitArt)
