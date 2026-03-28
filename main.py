@@ -105,7 +105,7 @@ def main():
     elif args.command == "exit":
         exitArt=text2art("ByeBye")
         print(exitArt)
-        SystemExit(1)
+        exit(0)
 
 
 
