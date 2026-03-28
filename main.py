@@ -55,8 +55,16 @@ def list_tasks():
     console.print(table)
     
 
-def delete_task():
-    pass
+def delete_task(tasks, task_id):
+    task_id = int(task_id)
+    task_to_delete = next((t for t in tasks if t["id"] == task_id), None)
+    if task_to_delete:
+        tasks.remove(task_to_delete)
+        write_task('todo.json', tasks)
+        print(f"✅ Task {task_id} removed")
+    else:
+        print(f"❌ Task {task_id} not found")
+    
 
 def search_task():
  pass
@@ -84,7 +92,7 @@ def main():
     list_parser = subparsers.add_parser('list', help="list tasks")
 
     del_parser = subparsers.add_parser('delete', help="delete a task")
-    del_parser.add_argument('task', type=str, help="Task to delete")
+    del_parser.add_argument('task_id', type=str, help="Task ID to delete")
 
     search_parser = subparsers.add_parser('search', help="Search for tasks")
     search_parser.add_argument('task', type=str, help="Task to search for")
