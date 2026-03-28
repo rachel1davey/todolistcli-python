@@ -2,7 +2,7 @@ import argparse
 import rich
 from rich.table import Column, Table
 from rich.console import Console
-
+from art import *
 import json
 
 
@@ -63,6 +63,9 @@ def search_task():
 
 
 def main():
+    welcomeArt = text2art("Welcome")
+    print(welcomeArt)
+    print("add - list - search - delete")
 
 
     parser = argparse.ArgumentParser(
@@ -85,6 +88,8 @@ def main():
 
     search_parser = subparsers.add_parser('search', help="Search for tasks")
     search_parser.add_argument('task', type=str, help="Task to search for")
+
+    exit_parser = subparsers.add_parser('exit', help="exit")
     
 
     args = parser.parse_args()
@@ -97,6 +102,10 @@ def main():
         delete_task(args.task)
     elif args.command == "search":
         search_task(args.task)
+    elif args.command == "exit":
+        exitArt=text2art("ByeBye")
+        print(exitArt)
+        SystemExit(1)
 
 
 
