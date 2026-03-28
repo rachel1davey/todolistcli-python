@@ -1,13 +1,5 @@
 [
     {
-        "id": 1,
-        "task": "test",
-        "description": "",
-        "duedate": "",
-        "priority": "",
-        "done": false
-    },
-    {
         "id": 2,
         "task": "test2",
         "description": "",

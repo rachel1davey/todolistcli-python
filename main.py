@@ -62,8 +62,10 @@ def delete_task(tasks, task_id):
         tasks.remove(task_to_delete)
         write_task('todo.json', tasks)
         print(f"✅ Task {task_id} removed")
+        list_tasks()
     else:
         print(f"❌ Task {task_id} not found")
+        list_tasks()
     
 
 def search_task():
@@ -107,7 +109,7 @@ def main():
     elif args.command == "list":
         list_tasks()
     elif args.command == "delete":
-        delete_task(args.task)
+        delete_task(tasks, args.task_id)
     elif args.command == "search":
         search_task(args.task)
     elif args.command == "exit":
